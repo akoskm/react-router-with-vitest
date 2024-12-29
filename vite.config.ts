@@ -12,15 +12,10 @@ export default defineConfig({
       plugins: [tailwindcss, autoprefixer],
     },
   },
-  plugins: [reactRouter(), tsconfigPaths()],
+  plugins: [!process.env.VITEST && reactRouter(), tsconfigPaths()],
   test: {
-    // globals: true,
-    // setupFiles: './test/setup.ts',
-    // environment: 'jsdom',
-    browser: {
-      enabled: true,
-      name: 'chromium',
-      provider: 'playwright',
-    },
+    globals: true,
+    setupFiles: './test/setup.ts',
+    environment: 'jsdom',
   },
 });
